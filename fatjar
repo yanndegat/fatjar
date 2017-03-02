@@ -1,0 +1,30 @@
+#!/bin/bash -e
+GROUP_ID=${1}
+ARTIFACT_ID=${2}
+VERSION=${3}
+
+if [ -z "$ARTIFACT_ID" ]; then
+    echo "ARTIFACT_ID env var must be set" >&2
+    exit 1
+fi
+
+if [ -z "$GROUP_ID" ]; then
+    echo "GROUP_ID env var must be set" >&2
+    exit 1
+fi
+
+if [ -z "$VERSION" ]; then
+    echo "VERSION env var must be set" >&2
+    exit 1
+fi
+
+mkdir /build
+cp /pom.xml /build
+sed -i 's/ARTIFACT_ID/'$ARTIFACT_ID'/g' /build/pom.xml
+sed -i 's/GROUP_ID/'$GROUP_ID'/g' /build/pom.xml
+sed -i 's/VERSION/'$VERSION'/g' /build/pom.xml
+
+cd build
+mvn package -Dmaven.test.skip=true
+mv target/$ARTIFACT_ID-fatjar-$VERSION-jar-with-dependencies.jar /target/$ARTIFACT_ID-$VERSION-fatjar.jar
+

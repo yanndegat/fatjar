@@ -1,0 +1,15 @@
+#+TITLE:FATJAR builds a fatjar of a maven artifact.
+
+* What?
+
+  Dumb project that builds a fatjar of a maven artifact.
+
+* Why?
+
+well, if you don't know why this project can be useful, then you probably don't need it.
+
+* How?
+
+#+BEGIN_SRC bash
+docker run --rm -v $PWD:/target fatjar GROUP_ID ARTIFACT_ID VERSION
+#+END_SRC
