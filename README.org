@@ -13,3 +13,10 @@ well, if you don't know why this project can be useful, then you probably don't 
 #+BEGIN_SRC bash
 docker run --rm -v $PWD:/target fatjar GROUP_ID ARTIFACT_ID VERSION
 #+END_SRC
+
+or
+
+#+BEGIN_SRC bash
+docker run --rm -v $PWD:/target yanndegat/fatjar GROUP_ID ARTIFACT_ID VERSION
+#+END_SRC
+
