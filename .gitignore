@@ -13,3 +13,4 @@ logs
 *.pub
 *.pem
 *.swp
+.??*
